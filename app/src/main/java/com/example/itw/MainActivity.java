@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
                         InputStreamReader isr = new InputStreamReader(fis);
                         BufferedReader br = new BufferedReader(isr);
                         String line;
+                        Boolean flag = false;
 
                         while ((line = br.readLine()) != null) {
                             String[] parts = line.split(",");
@@ -55,10 +56,12 @@ public class MainActivity extends AppCompatActivity {
                                 Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
                                 intent.putExtra("name", db_name);
                                 startActivity(intent);
+                                flag = true;
                             }
                         }
-
-                        Toast.makeText(MainActivity.this, "Login Failed!", Toast.LENGTH_SHORT).show();
+                        if (!flag) {
+                            Toast.makeText(MainActivity.this, "Login Failed!", Toast.LENGTH_SHORT).show();
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                         Toast.makeText(MainActivity.this, "Error reading file!", Toast.LENGTH_SHORT).show();
