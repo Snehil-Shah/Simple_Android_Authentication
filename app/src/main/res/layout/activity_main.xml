@@ -74,6 +74,12 @@
                 android:backgroundTint="@color/purple"
                 app:cornerRadius = "20dp"/>
 
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/captcha"
+                android:text="I'm not a robot!"/>
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

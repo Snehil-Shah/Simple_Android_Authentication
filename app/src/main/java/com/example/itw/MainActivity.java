@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.CheckBox;
 import android.text.TextUtils;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     EditText password;
     Button loginButton;
 
+    CheckBox captcha;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +33,12 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         loginButton = findViewById(R.id.loginButton);
+        captcha = findViewById(R.id.captcha);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (TextUtils.isEmpty(username.getText().toString()) && TextUtils.isEmpty(password.getText().toString())) {
+                if (TextUtils.isEmpty(username.getText().toString()) || TextUtils.isEmpty(password.getText().toString()) || !captcha.isChecked()) {
                     Toast.makeText(MainActivity.this, "All fields compulsory!", Toast.LENGTH_SHORT).show();
                 } else {
                     try {
